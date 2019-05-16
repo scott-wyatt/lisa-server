@@ -1,0 +1,75 @@
+{
+  "name": "lisa-server",
+  "version": "1.0.0",
+  "description": "A new Fabrix application",
+  "homepage": "https://fabrix.app",
+  "author": {
+    "name": "jaumard",
+    "email": "jimmy.aumard@gmail.com",
+    "url": "https://jaumard.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabrix-app/example-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabrix-app/example-app.git"
+  },
+  "keywords": [
+    "mylisabox",
+    "fabrix",
+    "lisa",
+    "L.I.S.A."
+  ],
+  "scripts": {
+    "build": "tsc -p ./src/tsconfig.release.json",
+    "lint": "tslint -p ./src",
+    "watch": "tsc -w -p ./src/tsconfig.release.json",
+    "test": "npm run clean && npm run lint && npm run build && nyc mocha",
+    "prepublishOnly": "npm run compile",
+    "compile": "npm run clean && npm run build",
+    "clean": "rm -rf dist",
+    "ci": "cd .. && ci",
+    "start": "npm run compile && node dist/server"
+  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "pre-commit": [
+    "test"
+  ],
+  "dependencies": {
+    "@fabrix/fabrix": "^1.6.0",
+    "@fabrix/lint": "^1.0.0-alpha.3",
+    "@fabrix/spool-express": "^1.6.3",
+    "@fabrix/spool-i18n": "^1.5.1",
+    "@fabrix/spool-repl": "^1.5.0",
+    "@fabrix/spool-router": "^1.6.2",
+    "@fabrix/spool-sequelize": "^1.6.13",
+    "@fabrix/spool-winston": "^1.6.0",
+    "sqlite3": "^4.0.8",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "~10.14.6",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
+    "pg": "^6.4.2",
+    "smokesignals": "^2.1.1",
+    "supertest": "^3.4.2",
+    "tslib": "~1.9.3",
+    "tslint": "~5.16.0",
+    "tslint-microsoft-contrib": "~5.2.1",
+    "tsutils": "~2.29.0",
+    "typescript": "~2.9.2"
+  },
+  "engines": {
+    "node": ">= 7.6.0 =< 10.0.0",
+    "npm": ">= 3.10.0"
+  }
+}
